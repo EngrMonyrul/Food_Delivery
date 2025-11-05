@@ -24,12 +24,6 @@ class CustomInterceptors extends InterceptorsWrapper {
   // on-request method
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.headers.addAll({
-      'zoneId': '[1]',
-      'latitude': '23.735129',
-      'longitude': '90.425614',
-    });
-
     log(
       "🚀 Api Requesting: \nUrl: ${options.uri}\nHeader: ${options.headers}\nRequest Data: ${options.data}",
     );
@@ -49,11 +43,13 @@ class CustomInterceptors extends InterceptorsWrapper {
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     final data = response.data;
-    if (data is Map) {
-      data.putIfAbsent("status_code", () => response.statusCode);
-      data.putIfAbsent("message", () => response.statusMessage);
-      response.data = data;
-    }
+    final customResponse = {
+      "status_code": response.statusCode,
+      "message": response.statusMessage,
+      "data": data,
+    };
+
+    response.data = customResponse;
 
     log(
       "✔️ Api Response: \nUrl: ${response.realUri}\nHeader: ${response.headers}\nResponse Data: ${response.data}",
