@@ -77,17 +77,18 @@ class MockApiClient extends _i1.Mock implements _i3.ApiClient {
           as _i4.Future<_i2.BaseResponse<_i6.BannerItem>>);
 
   @override
-  _i4.Future<_i2.BaseResponse<_i7.Categories>> getCategories() =>
+  _i4.Future<_i2.BaseResponse<List<_i7.Categories>>> getCategories() =>
       (super.noSuchMethod(
             Invocation.method(#getCategories, []),
-            returnValue: _i4.Future<_i2.BaseResponse<_i7.Categories>>.value(
-              _FakeBaseResponse_0<_i7.Categories>(
-                this,
-                Invocation.method(#getCategories, []),
-              ),
-            ),
+            returnValue:
+                _i4.Future<_i2.BaseResponse<List<_i7.Categories>>>.value(
+                  _FakeBaseResponse_0<List<_i7.Categories>>(
+                    this,
+                    Invocation.method(#getCategories, []),
+                  ),
+                ),
           )
-          as _i4.Future<_i2.BaseResponse<_i7.Categories>>);
+          as _i4.Future<_i2.BaseResponse<List<_i7.Categories>>>);
 
   @override
   _i4.Future<_i2.BaseResponse<_i8.PopularProducts>> getProductPopular() =>

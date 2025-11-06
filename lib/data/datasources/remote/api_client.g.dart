@@ -80,12 +80,12 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<BaseResponse<Categories>> getCategories() async {
+  Future<BaseResponse<List<Categories>>> getCategories() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<BaseResponse<Categories>>(
+    final _options = _setStreamType<BaseResponse<List<Categories>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -96,11 +96,17 @@ class _ApiClient implements ApiClient {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late BaseResponse<Categories> _value;
+    late BaseResponse<List<Categories>> _value;
     try {
-      _value = BaseResponse<Categories>.fromJson(
+      _value = BaseResponse<List<Categories>>.fromJson(
         _result.data!,
-        (json) => Categories.fromJson(json as Map<String, dynamic>),
+        (json) => json is List<dynamic>
+            ? json
+                  .map<Categories>(
+                    (i) => Categories.fromJson(i as Map<String, dynamic>),
+                  )
+                  .toList()
+            : List.empty(),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);

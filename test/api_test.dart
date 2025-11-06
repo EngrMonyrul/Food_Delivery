@@ -20,7 +20,7 @@ void main() {
 
     GetIt.I.registerLazySingleton<ApiClient>(() => mockApiClient);
     GetIt.I.registerLazySingleton<ConfigurationRepo>(
-      () => ConfigurationRepoImpl(GetIt.I<ApiClient>()),
+          () => ConfigurationRepoImpl(GetIt.I<ApiClient>()),
     );
 
     configurationRepo = GetIt.I<ConfigurationRepo>();
@@ -30,7 +30,6 @@ void main() {
   group("Config api test", () {
     test("Should return config data when API call succeeds", () async {
       // Arrange
-      final mockConfig = Configuration();
       final mockResponse = BaseResponse<Configuration>(statusCode: 200);
 
       when(
@@ -41,7 +40,7 @@ void main() {
       final result = await configurationRepo.getConfigurations();
 
       // Log result for debug
-      log(
+      print(
         "Test Success: ${result.statusCode}, ${result.message}, ${result.data}",
       );
 
@@ -60,7 +59,7 @@ void main() {
       final result = await configurationRepo.getConfigurations();
 
       // Log result for debug
-      log(
+      print(
         "Test Failure: ${result.statusCode}, ${result.message}, ${result.data}",
       );
 

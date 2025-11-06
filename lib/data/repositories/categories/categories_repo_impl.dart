@@ -12,7 +12,7 @@ class CategoriesRepoImpl extends CategoriesRepo {
   ApiClient _apiClient;
 
   @override
-  Future<BaseResponse<Categories>> getCategories() async {
+  Future<BaseResponse<List<Categories>>> getCategories() async {
     return await _apiClient
         .getCategories()
         .then((value) => value)
