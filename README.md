@@ -34,9 +34,9 @@ A Flutter mobile application for browsing restaurants, food items, and campaigns
 
 ## Screenshots
 
-![Home Screen](assets/images/WhatsApp Image 2025-11-08 at 23.07.45_3e6b1426.jpg)  
-![Loading Shimmer Screen](assets/images/WhatsApp Image 2025-11-08 at 23.07.46_57ad8b5e.jpg)  
-![Restaurant List](assets/images/WhatsApp Image 2025-11-08 at 23.07.45_dd7d13fb.jpg)
+![Home Screen](assets/images/home.jpg)  
+![Loading Shimmer Screen](assets/images/shimmer.jpg)  
+![Restaurant List](assets/images/restaurant.jpg)
 
 ---
 
