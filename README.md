@@ -35,8 +35,8 @@ A Flutter mobile application for browsing restaurants, food items, and campaigns
 ## Screenshots
 
 <p align="center">
-  <img src="assets/images/home.jpg" alt="Home Screen" height="500" style="margin-right:10px;">
-  <img src="assets/images/shimmer.jpg" alt="Loading Shimmer" height="500" style="margin-right:10px;">
+  <img src="assets/images/home.jpg" alt="Home Screen" height="500" style="margin-right:40px;">
+  <img src="assets/images/shimmer.jpg" alt="Loading Shimmer" height="500" style="margin-right:40px;">
   <img src="assets/images/restaurant.jpg" alt="Restaurant List" height="500">
 </p>
 
