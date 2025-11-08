@@ -11,11 +11,6 @@ void setupDi({required String baseUrl}) {
         BaseOptions(
           baseUrl: baseUrl,
           contentType: "application/json; charset=UTF-8",
-          headers: {
-            'zoneId': '[1]',
-            'latitude': '23.735129',
-            'longitude': '90.425614',
-          },
         ),
       )..interceptors.add(CustomInterceptors()),
     ),

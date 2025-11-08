@@ -39,7 +39,7 @@ abstract class ApiClient {
   Future<BaseResponse<PopularProducts>> getProductPopular();
 
   @GET("/api/v1/campaigns/item")
-  Future<BaseResponse<CampaignsItem>> getCampaignsItems();
+  Future<BaseResponse<List<CampaignsItem>>> getCampaignsItems();
 
   @GET("/api/v1/restaurants/get-restaurants/all")
   Future<BaseResponse<ResturantItem>> getResturantItems({

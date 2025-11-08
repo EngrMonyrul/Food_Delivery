@@ -24,6 +24,13 @@ class CustomInterceptors extends InterceptorsWrapper {
   // on-request method
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    // adding common headers
+    options.headers.addAll({
+      'zoneId': '[1]',
+      'latitude': '23.735129',
+      'longitude': '90.425614',
+    });
+
     log(
       "🚀 Api Requesting: \nUrl: ${options.uri}\nHeader: ${options.headers}\nRequest Data: ${options.data}",
     );

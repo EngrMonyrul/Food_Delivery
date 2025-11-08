@@ -146,12 +146,12 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<BaseResponse<CampaignsItem>> getCampaignsItems() async {
+  Future<BaseResponse<List<CampaignsItem>>> getCampaignsItems() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<BaseResponse<CampaignsItem>>(
+    final _options = _setStreamType<BaseResponse<List<CampaignsItem>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -162,11 +162,17 @@ class _ApiClient implements ApiClient {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late BaseResponse<CampaignsItem> _value;
+    late BaseResponse<List<CampaignsItem>> _value;
     try {
-      _value = BaseResponse<CampaignsItem>.fromJson(
+      _value = BaseResponse<List<CampaignsItem>>.fromJson(
         _result.data!,
-        (json) => CampaignsItem.fromJson(json as Map<String, dynamic>),
+        (json) => json is List<dynamic>
+            ? json
+                  .map<CampaignsItem>(
+                    (i) => CampaignsItem.fromJson(i as Map<String, dynamic>),
+                  )
+                  .toList()
+            : List.empty(),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);

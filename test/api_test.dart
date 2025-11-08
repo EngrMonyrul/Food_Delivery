@@ -1,29 +1,29 @@
 import 'dart:developer';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:food_resturant_app/data/repositories/homeRepo/home_repo_impl.dart';
+import 'package:food_resturant_app/domain/repositories/homeRepo/home_repo.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mockito/mockito.dart';
 import 'package:food_resturant_app/data/datasources/remote/api_client.dart';
 import 'package:food_resturant_app/data/models/base_response.dart';
 import 'package:food_resturant_app/data/models/configurations/configuration_model.dart';
-import 'package:food_resturant_app/data/repositories/configurations/configuration_repo_impl.dart';
-import 'package:food_resturant_app/domain/repositories/configurations/configuration_repo.dart';
 
 import 'widget_test.mocks.dart';
 
 void main() {
   late MockApiClient mockApiClient;
-  late ConfigurationRepo configurationRepo;
+  late HomeRepo homeRepo;
 
   setUp(() {
     GetIt.I.reset();
     mockApiClient = MockApiClient();
 
     GetIt.I.registerLazySingleton<ApiClient>(() => mockApiClient);
-    GetIt.I.registerLazySingleton<ConfigurationRepo>(
-          () => ConfigurationRepoImpl(GetIt.I<ApiClient>()),
+    GetIt.I.registerLazySingleton<HomeRepo>(
+      () => HomeRepoImpl(GetIt.I<ApiClient>()),
     );
 
-    configurationRepo = GetIt.I<ConfigurationRepo>();
+    homeRepo = GetIt.I<HomeRepo>();
   });
 
   // config api test
@@ -37,7 +37,7 @@ void main() {
       ).thenAnswer((_) async => mockResponse);
 
       // Act
-      final result = await configurationRepo.getConfigurations();
+      final result = await homeRepo.getConfigurations();
 
       // Log result for debug
       print(
@@ -56,7 +56,7 @@ void main() {
       ).thenThrow(Exception("No data found"));
 
       // Act
-      final result = await configurationRepo.getConfigurations();
+      final result = await homeRepo.getConfigurations();
 
       // Log result for debug
       print(
