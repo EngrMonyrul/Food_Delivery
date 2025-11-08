@@ -8,6 +8,7 @@ A Flutter mobile application for browsing restaurants, food items, and campaigns
 
 - [Features](#features)
 - [Screenshots](#screenshots)
+- [Video](#video)
 - [Installation](#installation)
 - [Folder Structure](#folder-structure)
 - [State Management](#state-management)
@@ -41,6 +42,9 @@ A Flutter mobile application for browsing restaurants, food items, and campaigns
 </p>
 
 ---
+
+## Video
+[Click to watch the video](assets/videos/project_video.mp4)
 
 ## Installation
 
