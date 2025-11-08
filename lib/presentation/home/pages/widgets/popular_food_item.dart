@@ -5,7 +5,20 @@ import 'package:food_resturant_app/utils/extensions/context_ext.dart';
 import 'package:food_resturant_app/utils/extensions/widget_ext.dart';
 
 class PopularFoodItem extends StatelessWidget {
-  const PopularFoodItem({super.key});
+  const PopularFoodItem({
+    super.key,
+    this.image,
+    this.itemName,
+    this.restaurentName,
+    this.price,
+    this.rating,
+  });
+
+  final String? image;
+  final String? itemName;
+  final String? restaurentName;
+  final double? price;
+  final double? rating;
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +28,7 @@ class PopularFoodItem extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(left: 8, right: 8, bottom: 8),
       child: Container(
+        height: 220,
         width: screenSize.width * 0.4,
         decoration: BoxDecoration(
           color: ColorThemeConfig.white,
@@ -35,29 +49,38 @@ class PopularFoodItem extends StatelessWidget {
             children: [
               //---> item image
               CustomNetworkImage(
-                imageUrl:
-                    "https://www.foodandwine.com/thmb/XE8ubzwObCIgMw7qJ9CsqUZocNM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MSG-Smash-Burger-FT-RECIPE0124-d9682401f3554ef683e24311abdf342b.jpg",
+                imageUrl: image ?? "",
+                height: 120,
+                width: double.infinity,
+                boxFit: BoxFit.fill,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //---> item name
                   Text(
-                    "Fried Noodles",
+                    itemName ?? "",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
 
                   //---> item shop
-                  Text("Mac Donald", style: theme.textTheme.labelMedium),
+                  Text(
+                    restaurentName ?? "",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.labelMedium,
+                  ),
                   SizedBox(height: 5),
 
                   Row(
                     children: [
                       //---> price
                       Text(
-                        "\$7.56",
+                        "\$${price}",
                         style: theme.textTheme.bodyMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -73,7 +96,7 @@ class PopularFoodItem extends StatelessWidget {
 
                       //---> star
                       Text(
-                        "4.9",
+                        "${rating?.toStringAsFixed(1)}",
                         style: theme.textTheme.bodyMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),

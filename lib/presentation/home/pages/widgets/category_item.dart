@@ -48,6 +48,7 @@ class CategoryItem extends StatelessWidget {
                 imageUrl: itemImage ?? "",
                 height: 35,
                 width: 35,
+                boxFit: BoxFit.fill,
               ),
             ),
             SizedBox(height: 7),

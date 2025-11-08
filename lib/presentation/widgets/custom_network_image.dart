@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:food_resturant_app/utils/assets/assets_consts.dart';
 
 class CustomNetworkImage extends StatelessWidget {
   const CustomNetworkImage({
@@ -23,7 +24,7 @@ class CustomNetworkImage extends StatelessWidget {
         return Center(child: CircularProgressIndicator());
       },
       errorWidget: (context, url, error) {
-        return Image.asset("name");
+        return Image.asset(AssetsConsts.imgNoImageFound);
       },
       fit: boxFit ?? BoxFit.fill,
       height: height,

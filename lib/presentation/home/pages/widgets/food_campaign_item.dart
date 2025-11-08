@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:food_resturant_app/core/themeConfigs/color_theme_config.dart';
 import 'package:food_resturant_app/presentation/widgets/custom_network_image.dart';
 import 'package:food_resturant_app/utils/extensions/context_ext.dart';
 import 'package:food_resturant_app/utils/extensions/widget_ext.dart';
 
 class FoodCampaignItem extends StatelessWidget {
-  const FoodCampaignItem({super.key});
+  const FoodCampaignItem({
+    super.key,
+    this.foodImage,
+    this.foodName,
+    this.restaurantName,
+    this.price,
+    this.star,
+  });
+
+  final String? foodImage;
+  final String? foodName;
+  final String? restaurantName;
+  final double? price;
+  final double? star;
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +49,7 @@ class FoodCampaignItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(15),
               child: CustomNetworkImage(
-                imageUrl:
-                    "https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGVsaWNpb3VzJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D&fm=jpg&q=60&w=3000",
+                imageUrl: foodImage ?? "",
                 height: 80,
                 width: 100,
               ),
@@ -49,7 +62,7 @@ class FoodCampaignItem extends StatelessWidget {
                 children: [
                   //---> item name
                   Text(
-                    "Burger",
+                    foodName ?? "",
                     style: theme.textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -61,7 +74,7 @@ class FoodCampaignItem extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: "Mc Donald,",
+                          text: "${restaurantName},",
                           style: theme.textTheme.labelMedium?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
@@ -72,12 +85,22 @@ class FoodCampaignItem extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 10),
+                  RatingStars(
+                    value: star ?? 0,
+                    starCount: 5,
+                    starSize: 13,
+                    valueLabelVisibility: false,
+                    starSpacing: 4,
+                    starColor: theme.colorScheme.primary,
+                    starOffColor: Colors.grey.shade300,
+                    onValueChanged: (v) {},
+                  ),
 
                   Row(
                     children: [
                       //---> price
                       Text(
-                        "\$7.56",
+                        "\$${price}",
                         style: theme.textTheme.bodyMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
