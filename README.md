@@ -57,7 +57,7 @@ cd Food_Delivery
 - Android Studio Narwhal 4
 
 ## Folder Structure
-
+```text
 lib/
 ├── core/                       # App-level core utilities and configuration
 │   ├── network/                # API clients, network interceptors
@@ -86,9 +86,22 @@ lib/
 ├── assets/                 # Images, fonts, icons, etc.
 ├── extensions/             # Dart extensions for cleaner code
 └── services/               # App-level services (location, notifications, etc.)
+```
 
 Notes:
 - Clean architecture: separates presentation, domain, and data layers
 - Scalable: easy to add new features without breaking existing code
 - Testable: domain and data layers are isolated for unit testing
 - Readable: folders are self-explanatory and organized
+
+## State Management
+
+BLoC (Business Logic Component)
+- The app uses flutter_bloc to manage the state.
+- HomeBloc handles all home-related data including banners, categories, popular foods, campaigns, and restaurants.
+- Pagination is implemented via LoadRestaurantMoreData event.
+
+## Pagination
+- Restaurant list supports infinite scroll using ScrollController
+- When the user scrolls near the bottom, a LoadRestaurantMoreData event is triggered
+- New data is appended to the existing list and the UI updates automatically
